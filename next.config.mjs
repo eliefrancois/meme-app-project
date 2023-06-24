@@ -26,6 +26,11 @@ const config = {
         hostname: 'i.imgflip.com',
         port: '',
       },
+      {
+        protocol: 'http',
+        hostname: 'www.apimeme.com',
+        port: '',
+      }
     ],
   },
 };

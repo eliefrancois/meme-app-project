@@ -12,16 +12,15 @@ import { toast } from "react-hot-toast";
 type meme = {
     url : string,
     name : string,
-    description : string,
 }
 
-export const MemeCard = ({ url, name, description }: meme) => {
+export const MemeCard = ({ url, name }: meme) => {
   const [showModal, setShowModal] = useState(false);
   const {register, handleSubmit, reset, formState} = useForm({ defaultValues: {email: ""}});
 
 
-  const onSubmit = (data: any) => {
-    toast.success(`Meme sent to ${data?.email}`);
+  const onSubmit = (data: any, _props: any) => {
+    toast.success(`${name} sent to ${data?.email}`);
     setShowModal(false);
   }
   
@@ -35,28 +34,24 @@ export const MemeCard = ({ url, name, description }: meme) => {
   const handleShow = () => setShowModal(true);
 
   return (
-    <Card style={{ width: "18rem", margin: "2rem" }}>
-      <Card.Img variant="top" src={url} />
+    <Card>
+      <Card.Img variant="top" src={url} style={{ width: "200px", height: "200px", margin: "100px" }} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
-        <Card.Text>{description}</Card.Text>
         <Button onClick={handleShow}>Meme Me</Button>
 
 
-        <Modal show={showModal} onHide={handleClose}>
+        <Modal show={showModal} onHide={handleClose} dialogClassName="modal-70w">
         <Modal.Header closeButton>
           <Modal.Title>{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container>
-            <Row style={{justifyItems: "center"}}> 
-              {description}
+            <Row>
+              <Image src={`http://www.apimeme.com/meme?meme=${name}&top=Top+text&bottom=Bottom+text`} alt= {name?? "Meme Image"} width={650} height={650} />
             </Row>
             <Row>
-              <Image src={url} alt= {name?? "Meme Image"} width={550} height={550} />
-            </Row>
-            <Row>
-              <Form onSubmit={handleSubmit(onSubmit)}>
+              <Form onSubmit={handleSubmit(data => onSubmit(data, name))}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control

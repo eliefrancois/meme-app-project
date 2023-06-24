@@ -1,5 +1,6 @@
 import Head from "next/head";
 import {Button, Card } from "react-bootstrap";
+import { MemeCard } from "~/components/Card";
 import { Hero } from "~/components/Hero";
 import { api } from "~/utils/api";
 
@@ -15,44 +16,74 @@ export default function Home() {
       </Head>
       <main>
         <Hero />
-
         <div className="row">
-          <div className="col"><Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card></div>
-          <div className="col"><Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card></div>
-          <div className="col"><Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card></div>
+        {memeData?.map((meme) => (
+          <MemeCard key={meme?.name} url={meme?.url} name={meme?.name} description={meme?.description}/>
+        ))}
         </div>
-
       </main>
     </>
   );
 }
+
+
+
+
+
+const memeData = [
+  {
+      "name": "Meme 1",
+      "url": "https://i.imgflip.com/1bij.jpg",
+      "description": "This is a meme"
+  },
+
+  {
+      "name": "Meme 2",
+      "url": "https://i.imgflip.com/1bij.jpg",
+      "description": "This is a meme"
+  },
+
+  {
+      "name": "Meme 3",
+      "url": "https://i.imgflip.com/1bij.jpg",
+      "description": "This is a meme"
+  },
+
+  {
+      "name": "Meme 4",
+      "url": "https://i.imgflip.com/1bij.jpg",
+      "description": "This is a meme"
+  },
+
+  {
+      "name": "Meme 5",
+      "url": "https://i.imgflip.com/1bij.jpg",
+      "description": "This is a meme"
+  },
+
+  {
+      "name": "Meme 6",
+      "url": "https://i.imgflip.com/1bij.jpg",
+      "description": "This is a meme"
+  },
+
+  {
+      "name": "Meme 7",
+      "url": "https://i.imgflip.com/1bij.jpg",
+      "description": "This is a meme"
+  },
+
+  {
+      "name": "Meme 8",
+      "url": "https://i.imgflip.com/1bij.jpg",
+      "description": "This is a meme"
+  },
+
+  {
+      "name": "Meme 9",
+      "url": "https://i.imgflip.com/1bij.jpg",
+      "description": "This is a meme"
+  }
+
+
+]

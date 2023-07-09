@@ -31,4 +31,5 @@ model Memes {
   meme_img String @db.VarChar(255)
   user_meme_collection User @relation(fields: [user_meme_id], references: [user_id])
   user_meme_id Int
+  user_meme_timestamp DateTime
 }
